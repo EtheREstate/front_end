@@ -1,14 +1,30 @@
 <template>
 	<header>
-		<span class="logo-text">EtheREstate.</span>
+		<router-link :to="{ name: 'Home' }" :class="'logo-text'"
+			>EtheRente.</router-link
+		>
 		<nav id="homepage-navbar">
 			<ul id="homepage-navlinks">
 				<li>
-					<a>Marketplace</a>
+					<router-link :to="{ name: 'Marketplace' }" :class="'navlinks'"
+						>Marketplace</router-link
+					>
 				</li>
-				<li><a>About Tokens</a></li>
-				<li><a>Contact</a></li>
-				<li><a>FAQ</a></li>
+				<li>
+					<router-link :to="{ name: 'Marketplace' }" :class="'navlinks'"
+						>About Tokens</router-link
+					>
+				</li>
+				<li>
+					<router-link :to="{ name: 'Marketplace' }" :class="'navlinks'"
+						>Contact</router-link
+					>
+				</li>
+				<li>
+					<router-link :to="{ name: 'Marketplace' }" :class="'navlinks'"
+						>FAQ</router-link
+					>
+				</li>
 			</ul>
 		</nav>
 		<a class="etherestate-button-1">
@@ -20,6 +36,14 @@
 <script>
 export default {
 	name: 'NavBar',
+	setup() {
+		function goMarketPlace() {
+			console.log('click emitted');
+			router.push({ name: 'Marketplace' });
+		}
+		return { goMarketPlace };
+	},
+	method() {},
 };
 </script>
 
@@ -40,12 +64,15 @@ export default {
 	margin: 2vh auto 0 auto;
 }
 
-#homepage-navlinks li a {
+.navlinks {
 	cursor: pointer;
 	transition: all 0.3s ease 0s;
 	color: #578688;
 }
-#homepage-navlinks li a:hover {
+.navlinks:visited {
+	color: #578688;
+}
+.navlinks:hover {
 	color: white;
 
 	&::after {

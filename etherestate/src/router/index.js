@@ -11,12 +11,12 @@ const routes = [
 	},
 	{
 		path: '/marketplace',
-		name: 'marketplace',
+		name: 'Marketplace',
 		component: MarketPlace,
 	},
 	{
 		path: '/housepage/:id',
-		name: 'housePage',
+		name: 'HousePage',
 		props: true,
 		component: HousePage,
 	},

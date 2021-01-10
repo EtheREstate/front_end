@@ -1,5 +1,4 @@
 <template>
-	{{ $route.params.id }}
 	<Suspense>
 		<template #default>
 			<div>
@@ -9,16 +8,19 @@
 						:propertyHighlights="propertyHighlights"
 						:financialHighlights="financialHighlights"
 					/>
-				</div></div
-		></template>
-		<template #fallback> Loading ... </template>
+				</div>
+			</div>
+		</template>
+		<template #fallback>
+			<div>Loading ...</div>
+		</template>
 	</Suspense>
 </template>
 
 <script>
 import HousePictures from '../components/HousePage/HousePictures.vue';
 import HouseDetails from '../components/HousePage/HouseDetails.vue';
-import axios from 'axios';
+import * as houseService from '../service/houses.service.js';
 export default {
 	name: 'HousePage',
 	components: { HousePictures, HouseDetails },
@@ -26,10 +28,17 @@ export default {
 		id: { type: String, required: true, default: '3' },
 	},
 	async setup(props) {
-		console.log(props.id);
-		let { data: houseInfos } = await axios.get(
-			`http://localhost:3000/HousesList/${props.id}`
-		);
+		let { data: houseInfos } = await houseService.getHouseDetails(props.id);
+		// let picturesArray = [];
+		// for (var i = 0; i < props.pictures.length; i++) {
+		// 	const imageExist = await axios
+		// 		.get(props.pictures[i])
+		// 		.then(() => picturesArray.push(props.pictures[i]))
+		// 		.catch(() =>
+		// 			picturesArray.push('../../assets/pictures/DummyHouse.jpg')
+		// 		);
+		// }
+		console.log(houseInfos);
 		return {
 			pictures: houseInfos.pictures,
 			propertyHighlights: houseInfos.propertyHighlights,

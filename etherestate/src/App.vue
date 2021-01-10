@@ -1,13 +1,14 @@
 <template>
 	<div>
 		<NavBar />
-		<!-- <MarketPlace /> -->
 		<Suspense>
-			<template #default> <HousePage /></template>
-			<template #fallback> Loading ... </template>
+			<template #default>
+				<router-view />
+			</template>
+			<template #fallback>
+				<div>Loading ...</div>
+			</template>
 		</Suspense>
-		<!-- <router-view /> -->
-		<!-- <Footer /> -->
 	</div>
 </template>
 

@@ -56,16 +56,8 @@ export default {
 			default: ['../../assets/pictures/DummyHouse.jpg'],
 		},
 	},
-	async setup(props) {
-		let picturesArray = [];
-		for (var i = 0; i < props.pictures.length; i++) {
-			const imageExist = await axios
-				.get(props.pictures[i])
-				.then(() => picturesArray.push(props.pictures[i]))
-				.catch(() =>
-					picturesArray.push('../../assets/pictures/DummyHouse.jpg')
-				);
-		}
+	setup(props) {
+		let picturesArray = [...props.pictures];
 		const firstImage = ref(picturesArray[0]);
 		function changeFirstImage(event) {
 			firstImage.value = picturesArray[event.target.value];

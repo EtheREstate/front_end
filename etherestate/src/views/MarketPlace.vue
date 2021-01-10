@@ -1,14 +1,20 @@
 <template>
-	<div>
-		<HouseCardList />
-	</div>
+	<Suspense>
+		<template #default>
+			<div>
+				<HouseBigCardList />
+				<HouseCardList /></div
+		></template>
+		<template #fallback> Loading ... </template>
+	</Suspense>
 </template>
 
 <script>
 import HouseCardList from '../components/MarketPlace/HouseCardList.vue';
+import HouseBigCardList from '../components/MarketPlace/HouseBigCardList.vue';
 export default {
 	name: 'MarketPlace',
-	components: { HouseCardList },
+	components: { HouseCardList, HouseBigCardList },
 };
 </script>
 

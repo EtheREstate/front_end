@@ -1,40 +1,52 @@
 <template>
-	<div class="house-card-wrapper">
-		<section id="section1">
-			<a href="#section3">{{ '<' }}</a>
-			<HouseCard />
-			<HouseCard />
-			<HouseCard />
-			<HouseCard />
-			<HouseCard />
-			<a href="#section2">{{ '>' }}</a>
-		</section>
-		<section id="section2" v-if="false">
-			<a href="#section1">{{ '<' }}</a>
-			<HouseCard />
-			<HouseCard />
-			<HouseCard />
-			<HouseCard />
-			<HouseCard />
-			<a href="#section3">{{ '>' }}</a>
-		</section>
-		<section id="section3" v-if="false">
-			<a href="#section2">{{ '<' }}</a>
-			<HouseCard />
-			<HouseCard />
-			<HouseCard />
-			<HouseCard />
-			<HouseCard />
-			<a href="#section1">{{ '>' }}</a>
-		</section>
-	</div>
+	<Suspense>
+		<template #default>
+			<div class="house-card-wrapper">
+				<section id="section1">
+					<a href="#section3">{{ '<' }}</a>
+					<HouseCard />
+					<HouseCard />
+					<HouseCard />
+					<HouseCard />
+					<HouseCard />
+					<a href="#section2">{{ '>' }}</a>
+				</section>
+				<section id="section2" v-if="false">
+					<a href="#section1">{{ '<' }}</a>
+					<HouseCard />
+					<HouseCard />
+					<HouseCard />
+					<HouseCard />
+					<HouseCard />
+					<a href="#section3">{{ '>' }}</a>
+				</section>
+				<section id="section3" v-if="false">
+					<a href="#section2">{{ '<' }}</a>
+					<HouseCard />
+					<HouseCard />
+					<HouseCard />
+					<HouseCard />
+					<HouseCard />
+					<a href="#section1">{{ '>' }}</a>
+				</section>
+			</div>
+		</template>
+		<template #fallback> Loading ... </template>
+	</Suspense>
 </template>
 
 <script>
 import HouseCard from './HouseCard.vue';
+import * as houseService from '../../service/houses.service.js';
 export default {
 	name: 'HouseCardList',
 	components: { HouseCard },
+	async setup() {
+		let { data: houseListInfos } = await houseService.getHousesList();
+		return {
+			houseListInfos,
+		};
+	},
 };
 </script>
 

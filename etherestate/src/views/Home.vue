@@ -1,12 +1,19 @@
 <template>
-	<div id="landing-image">
-		<img src="../assets/pictures/Hompage.jpg" alt="" />
-	</div>
+	<Suspense>
+		<template #default>
+			<div>
+				<HouseCardList /></div
+		></template>
+		<template #fallback> Loading ... </template>
+	</Suspense>
 </template>
 
 <script>
+import HouseCardList from '../components/MarketPlace/HouseCardList.vue';
+import HouseCard from '../components/MarketPlace/HouseCard.vue';
 export default {
 	name: 'Home',
+	components: { HouseCardList, HouseCard },
 };
 </script>
 
