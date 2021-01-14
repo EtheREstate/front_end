@@ -1,11 +1,9 @@
 <template>
 	<div class="house-details-container">
-		<div class="house-details">
-			<div class="address">{{ propertyHighlights.address }}</div>
-		</div>
+		<div class="address">{{ propertyHighlights.address }}</div>
 		<div class="house-details">
 			<!-- Property Highlights Card------------------------------------------------------>
-			<div class="house-highlights">
+			<div class="house-highlights" id="propertyCard">
 				<h1>Property Highlights</h1>
 				<div class="highlights-row">
 					<div class="row-text"><h3>Expected Yield</h3></div>
@@ -142,6 +140,13 @@
 					current conditions, and can change at any time.
 				</div>
 			</div>
+			<!-- Button to buy token------------------------------------------------------>
+
+			<a class="buy-token-btn"
+				><router-link :to="{ name: 'BuyToken', params: { id: houseId } }"
+					>Buy Token</router-link
+				></a
+			>
 		</div>
 	</div>
 </template>
@@ -185,7 +190,9 @@ export default {
 		},
 	},
 	setup(props) {
+		console.log(props.houseId);
 		return {
+			houseId: props.houseId,
 			propertyHighlights: props.propertyHighlights,
 			financialHighlights: props.financialHighlights,
 		};
@@ -194,6 +201,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/styles/main.css';
+
 .house-details-container {
 	width: 100%;
 	background-color: rgba(87, 134, 136, 1);
@@ -212,26 +221,38 @@ export default {
 	padding: 20px 10px 20px 10px;
 	background-color: rgba($color: whitesmoke, $alpha: 0.4);
 	border-radius: 18px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 50px;
+	row-gap: 15px;
+	column-gap: 15px;
+	// display: flex;
+	// align-items: center;
+	// justify-content: space-between;
+}
+#propertyCard {
+	grid-row-start: 1;
+	grid-row-end: 3;
 }
 .address {
 	background-color: whitesmoke;
 	padding: 20px;
+	margin-bottom: 30px;
 	border-radius: 18px;
+	color: #578688;
 	box-shadow: 5px 5px 15px rgba($color: #578688, $alpha: 0.4);
 	width: 100%;
 	font-size: 28px;
 	display: flex;
 	justify-content: center;
+	width: 40%;
 }
 .house-highlights {
-	background-color: whitesmoke;
+	background-color: rgb(245, 245, 245);
 	padding: 20px;
 	border-radius: 18px;
 	box-shadow: 5px 5px 15px rgba($color: #578688, $alpha: 0.4);
-	width: 48%;
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -279,5 +300,26 @@ h3 {
 	padding: 1px;
 	margin: 2px;
 	width: 100%;
+}
+
+.buy-token-btn {
+	background-color: rgb(251, 199, 98);
+	color: #578688;
+	font-size: 25px;
+	cursor: pointer;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 10px 30px;
+	border-radius: 40px;
+	width: 100%;
+	transition: all 0.3s ease 0s;
+}
+.buy-token-btn:hover {
+	background-color: whitesmoke;
+	color: #578688;
+}
+.buy-token-btn a:visited {
+	color: #578688;
 }
 </style>

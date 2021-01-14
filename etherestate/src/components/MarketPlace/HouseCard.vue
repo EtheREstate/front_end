@@ -53,7 +53,7 @@ $duration: 250ms;
 
 .house-card-image {
 	grid-area: 'image';
-	background: url('../../assets/pictures/DummyHouse.jpg');
+	background: url('../../assets/pictures/dummyHouse.jpg');
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
 	background-size: cover;

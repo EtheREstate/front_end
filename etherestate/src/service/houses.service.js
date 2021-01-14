@@ -12,3 +12,10 @@ export const getHouseDetails = (id) => {
 			return response;
 		});
 };
+
+export const checkPicture = (pictureUrl) => {
+	return axios
+		.get(pictureUrl)
+		.then(() => pictureUrl)
+		.catch(() => '../../assets/pictures/DummyHouse.jpg');
+};

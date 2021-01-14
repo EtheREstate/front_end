@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import MarketPlace from '../views/MarketPlace.vue';
 import HousePage from '../views/HousePage.vue';
+import BuyToken from '../views/BuyToken.vue';
 
 const routes = [
 	{
@@ -19,6 +20,12 @@ const routes = [
 		name: 'HousePage',
 		props: true,
 		component: HousePage,
+	},
+	{
+		path: '/buytoken/:id',
+		name: 'BuyToken',
+		props: true,
+		component: BuyToken,
 	},
 ];
 
