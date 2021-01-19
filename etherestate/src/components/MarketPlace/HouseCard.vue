@@ -1,23 +1,29 @@
 <template>
 	<div class="house-card">
-		<div class="house-card-image"></div>
+		<div
+			class="house-card-image"
+			:style="`background: url(${houseInfos.pictures[0]}) no-repeat 50% 50%`"
+		></div>
 		<div class="house-card-text">
 			<span class="date">4 days ago</span>
-			<h2>Paris</h2>
+			<h2>{{ houseInfos.propertyHighlights.city }}</h2>
 			<p>
 				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo sapiente
-				optio assumenda, necessitatibus molestiae reprehenderit temporibus fuga
-				est vitae.
+				optio assumenda, necessitatibus molestiae temporibus fuga est vitae.
 			</p>
 		</div>
 		<div class="house-card-stats">
 			<div class="stat right-border">
-				<div class="type">Min. Investment</div>
-				<div class="value">€52.43</div>
+				<div class="type">Part minimum</div>
+				<div class="value">
+					€ {{ houseInfos.propertyHighlights.tokenPrice }}
+				</div>
 			</div>
 			<div class="stat">
-				<div class="type">Expected Yield</div>
-				<div class="value">%11.23</div>
+				<div class="type">Rentabilité</div>
+				<div class="value">
+					% {{ houseInfos.propertyHighlights.expectedYield }}
+				</div>
 			</div>
 		</div>
 	</div>
@@ -26,6 +32,7 @@
 <script>
 export default {
 	name: 'HouseCard',
+	props: ['houseInfos'],
 };
 </script>
 
@@ -46,14 +53,14 @@ $duration: 250ms;
 	text-align: center;
 	transition: $duration all;
 	&:hover {
-		margin: 0 40px;
+		margin: 10px 10px;
 		transform: scale($itemGrow);
 	}
 }
 
 .house-card-image {
 	grid-area: 'image';
-	background: url('../../assets/pictures/dummyHouse.jpg');
+	// background: url('../../assets/pictures/dummyHouse.jpg');
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
 	background-size: cover;

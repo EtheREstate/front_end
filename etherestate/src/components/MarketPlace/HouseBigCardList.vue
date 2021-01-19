@@ -33,7 +33,6 @@ export default {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-
 	margin: 50px;
 	padding-top: 50px;
 }

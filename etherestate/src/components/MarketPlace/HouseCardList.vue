@@ -1,38 +1,15 @@
 <template>
-	<Suspense>
-		<template #default>
-			<div class="house-card-wrapper">
-				<section id="section1">
-					<a href="#section3">{{ '<' }}</a>
-					<HouseCard />
-					<HouseCard />
-					<HouseCard />
-					<HouseCard />
-					<HouseCard />
-					<a href="#section2">{{ '>' }}</a>
-				</section>
-				<section id="section2" v-if="false">
-					<a href="#section1">{{ '<' }}</a>
-					<HouseCard />
-					<HouseCard />
-					<HouseCard />
-					<HouseCard />
-					<HouseCard />
-					<a href="#section3">{{ '>' }}</a>
-				</section>
-				<section id="section3" v-if="false">
-					<a href="#section2">{{ '<' }}</a>
-					<HouseCard />
-					<HouseCard />
-					<HouseCard />
-					<HouseCard />
-					<HouseCard />
-					<a href="#section1">{{ '>' }}</a>
-				</section>
+	<div class="section-2-house-list">
+		<div class="left-switch"></div>
+		<div class="house-card-wrapper">
+			<div v-for="houseInfos in houseListToRender">
+				<router-link :to="{ name: 'HousePage', params: { id: houseInfos.id } }">
+					<HouseCard :houseInfos="houseInfos"
+				/></router-link>
 			</div>
-		</template>
-		<template #fallback> Loading ... </template>
-	</Suspense>
+		</div>
+		<div class="right-switch" @click="toggleRight"></div>
+	</div>
 </template>
 
 <script>
@@ -41,52 +18,56 @@ import * as houseService from '../../service/houses.service.js';
 export default {
 	name: 'HouseCardList',
 	components: { HouseCard },
-	async setup() {
+	async created() {
 		let { data: houseListInfos } = await houseService.getHousesList();
-		return {
-			houseListInfos,
-		};
+		// 	.then((response) => {
+		// 		return response;
+		// 	});
+		this.houseList = [...houseListInfos];
+		this.houseListToRender = [
+			houseListInfos[0],
+			houseListInfos[1],
+			houseListInfos[2],
+		];
+	},
+	data: () => ({
+		houseList: [],
+		houseListToRender: [],
+	}),
+	methods: {
+		toggleRight: function() {
+			console.log(this.houseList);
+			this.houseListToRender = [
+				this.houseList[3],
+				this.houseList[4],
+				this.houseList[5],
+			];
+			console.log('toggle right clicked');
+		},
 	},
 };
 </script>
 
 <style lang="scss" scoped>
-.house-card-wrapper {
+.section-2-house-list {
 	display: grid;
-	grid-template-columns: repeat(3, 100%);
-	section {
-		width: 100%;
-		position: relative;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		margin: 20px 0;
-		a {
-			color: whitesmoke;
-			text-decoration: none;
-			font-size: 80px;
-			background: #578688;
-			width: 100px;
-			padding: 20px;
-			text-align: center;
-			z-index: 1;
-			&:nth-of-type(1) {
-				align-self: start center;
-				background: linear-gradient(
-					-90deg,
-					rgba(87, 134, 136, 0) 0%,
-					rgba(87, 134, 136, 1) 100%
-				);
-			}
-			&:nth-of-type(2) {
-				align-self: end center;
-				background: linear-gradient(
-					90deg,
-					rgba(87, 134, 136, 0) 0%,
-					rgba(87, 134, 136, 1) 100%
-				);
-			}
-		}
-	}
+	width: 100%;
+	grid-template-columns: 10% 1fr 10%;
+}
+.house-card-wrapper {
+	margin: 0 20px 0 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-direction: row;
+}
+
+.left-switch {
+	background: url('../../assets/pictures/polygone2.png') no-repeat 50% 50%;
+	cursor: pointer;
+}
+.right-switch {
+	background: url('../../assets/pictures/polygone1.png') no-repeat 50% 50%;
+	cursor: pointer;
 }
 </style>

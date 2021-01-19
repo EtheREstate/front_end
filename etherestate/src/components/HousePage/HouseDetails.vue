@@ -190,7 +190,6 @@ export default {
 		},
 	},
 	setup(props) {
-		console.log(props.houseId);
 		return {
 			houseId: props.houseId,
 			propertyHighlights: props.propertyHighlights,

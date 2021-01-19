@@ -2,7 +2,7 @@
 	<div class="house-big-card">
 		<div
 			class="house-big-card-image"
-			:style="`background: url(${picture})`"
+			:style="`background: url(${picture}) no-repeat 50% 50%`"
 		></div>
 		<div class="house-big-card-text">
 			<div class="address">

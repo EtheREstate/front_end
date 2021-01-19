@@ -38,9 +38,9 @@
 		{
 			"id": 2,
 			"propertyHighlights": {
-				"address": "2047 Route de vamtallé",
+				"address": "1244 S. Avers St, Moscow, IL 60623",
 				"city": "Moscow",
-				"expectedYield": "11.27",
+				"expectedYield": "9.18",
 				"rentStartDate": "2020-12-28",
 				"rentperToken": "5.49",
 				"tokenPrice": "48.66",
@@ -74,9 +74,9 @@
 		{
 			"id": 3,
 			"propertyHighlights": {
-				"address": "2046 Route de Gammarth",
+				"address": "89 Rue du 7 novembre 75007",
 				"city": "Paris",
-				"expectedYield": "11.27",
+				"expectedYield": "10.2",
 				"rentStartDate": "2020-12-28",
 				"rentperToken": "5.49",
 				"tokenPrice": "48.66",
@@ -105,6 +105,111 @@
 				"https://images.unsplash.com/photo-1513584684374-8bab748fbf90?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1346&q=80",
 				"https://images.unsplash.com/photo-1488707872600-5507977fe355?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
 				"https://images.unsplash.com/photo-1430285561322-7808604715df?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+			]
+		},
+		{
+			"id": 4,
+			"propertyHighlights": {
+				"address": "Addresse 4 75000",
+				"city": "Rome",
+				"expectedYield": "10.2",
+				"rentStartDate": "2020-12-28",
+				"rentperToken": "5.49",
+				"tokenPrice": "48.66",
+				"totalTokens": "1,200",
+				"propertyType": "Single Family",
+				"neighborhood": "Bethune Community",
+				"area": "1,552",
+				"lotSize": "4,356",
+				"bedrooms": "3 Bed / 1 Bath",
+				"rented": "Fully Rented",
+				"legalLiability": "No"
+			},
+			"financialHighlights": {
+				"grossRentPerYear": "15,300",
+				"grossRentPerMonth": "775",
+				"monthlyCosts": "-226.42",
+				"netRentPerMonth": "548.58",
+				"netRentPerYear": "6,582.96",
+				"totalInvestment": "200,000",
+				"expectedYield": "11.27",
+				"maintenanceReserve": "--",
+				"dateOfPurchase": "11-09-2020",
+				"totalPrice": "300,000"
+			},
+			"pictures": [
+				"https://www.hemingwayhome.com/uploads/images/Hemingway_House_Side_Yard_Grass_roboneal_3355_sized_01.jpg",
+				"https://www.collater.al/wp-content/uploads/2019/12/House-in-the-Landscape-Collater.al-2.jpg"
+			]
+		},
+		{
+			"id": 5,
+			"propertyHighlights": {
+				"address": "Addresse 5 75000",
+				"city": "Dubai",
+				"expectedYield": "10.2",
+				"rentStartDate": "2020-12-28",
+				"rentperToken": "5.49",
+				"tokenPrice": "48.66",
+				"totalTokens": "1,200",
+				"propertyType": "Single Family",
+				"neighborhood": "Bethune Community",
+				"area": "1,552",
+				"lotSize": "4,356",
+				"bedrooms": "3 Bed / 1 Bath",
+				"rented": "Fully Rented",
+				"legalLiability": "No"
+			},
+			"financialHighlights": {
+				"grossRentPerYear": "15,300",
+				"grossRentPerMonth": "775",
+				"monthlyCosts": "-226.42",
+				"netRentPerMonth": "548.58",
+				"netRentPerYear": "6,582.96",
+				"totalInvestment": "200,000",
+				"expectedYield": "11.27",
+				"maintenanceReserve": "--",
+				"dateOfPurchase": "11-09-2020",
+				"totalPrice": "300,000"
+			},
+			"pictures": [
+				"https://cf.bstatic.com/images/hotel/max1024x768/135/135321167.jpg",
+				"https://cf.bstatic.com/images/hotel/max1024x768/138/138308947.jpg"
+			]
+		},
+		{
+			"id": 6,
+			"propertyHighlights": {
+				"address": "Addresse 6 75000",
+				"city": "Tunis",
+				"expectedYield": "10.2",
+				"rentStartDate": "2020-12-28",
+				"rentperToken": "5.49",
+				"tokenPrice": "48.66",
+				"totalTokens": "1,200",
+				"propertyType": "Single Family",
+				"neighborhood": "Bethune Community",
+				"area": "1,552",
+				"lotSize": "4,356",
+				"bedrooms": "3 Bed / 1 Bath",
+				"rented": "Fully Rented",
+				"legalLiability": "No"
+			},
+			"financialHighlights": {
+				"grossRentPerYear": "15,300",
+				"grossRentPerMonth": "775",
+				"monthlyCosts": "-226.42",
+				"netRentPerMonth": "548.58",
+				"netRentPerYear": "6,582.96",
+				"totalInvestment": "200,000",
+				"expectedYield": "11.27",
+				"maintenanceReserve": "--",
+				"dateOfPurchase": "11-09-2020",
+				"totalPrice": "300,000"
+			},
+			"pictures": [
+				"https://www.collater.al/wp-content/uploads/2019/12/House-in-the-Landscape-Collater.al-13.jpg",
+				"https://www.collater.al/wp-content/uploads/2019/12/House-in-the-Landscape-Collater.al-13.jpg"
 			]
 		}
 	]
