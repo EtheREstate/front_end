@@ -142,10 +142,8 @@
 			</div>
 			<!-- Button to buy token------------------------------------------------------>
 
-			<a class="buy-token-btn"
-				><router-link :to="{ name: 'BuyToken', params: { id: houseId } }"
-					>Buy Token</router-link
-				></a
+			<a class="buy-token-btn" href=http://localhost:5000/
+				>Invest in Ether</a
 			>
 		</div>
 	</div>
