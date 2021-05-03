@@ -141,9 +141,12 @@
 				</div>
 			</div>
 			<!-- Button to buy token------------------------------------------------------>
-
-			<a class="buy-token-btn" href=http://localhost:5000/
-				>Invest in Ether</a
+			<a class="buy-token-btn"
+				><router-link
+					:to="{ name: 'BuyToken' }"
+					style="text-decoration: none; color: inherit;"
+					>Buy Tokens
+				</router-link></a
 			>
 		</div>
 	</div>
@@ -223,9 +226,6 @@ export default {
 	grid-template-rows: 1fr 50px;
 	row-gap: 15px;
 	column-gap: 15px;
-	// display: flex;
-	// align-items: center;
-	// justify-content: space-between;
 }
 #propertyCard {
 	grid-row-start: 1;
@@ -255,6 +255,7 @@ export default {
 	justify-content: center;
 	flex-direction: column;
 }
+
 h1 {
 	font-weight: bold;
 	padding-bottom: 30px;

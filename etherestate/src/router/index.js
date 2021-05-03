@@ -3,6 +3,7 @@ import Home from '../views/Home.vue';
 import MarketPlace from '../views/MarketPlace.vue';
 import HousePage from '../views/HousePage.vue';
 import BuyToken from '../views/BuyToken.vue';
+import RegisterUser from '../views/RegisterUser.vue';
 
 const routes = [
 	{
@@ -26,6 +27,11 @@ const routes = [
 		name: 'BuyToken',
 		props: true,
 		component: BuyToken,
+	},
+	{
+		path: '/user/register',
+		name: 'Register',
+		component: RegisterUser,
 	},
 ];
 

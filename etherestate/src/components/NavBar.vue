@@ -28,7 +28,11 @@
 			</ul>
 		</nav>
 		<a class="etherestate-button-1">
-			Log In
+			<router-link
+				:to="{ name: 'Register' }"
+				style="text-decoration: none; color: inherit;"
+				>LOG IN</router-link
+			>
 		</a>
 	</header>
 </template>

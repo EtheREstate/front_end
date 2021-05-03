@@ -2,12 +2,12 @@ import axios from 'axios';
 
 export const getHousesList = () => {
 	return axios
-		.get(`http://localhost:3000/HousesList`)
+		.get(`http://localhost:8081/houseslist`)
 		.then((response) => response);
 };
 export const getHouseDetails = (id) => {
 	return axios
-		.get(`http://localhost:3000/HousesList/${id}`)
+		.get(`http://localhost:8081/houseslist/${id}`)
 		.then((response) => {
 			return response;
 		});
