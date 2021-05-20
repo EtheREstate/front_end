@@ -3,7 +3,9 @@
 		<div class="left-switch"></div>
 		<div class="house-card-wrapper">
 			<div v-for="houseInfos in houseListToRender">
-				<router-link :to="{ name: 'HousePage', params: { id: houseInfos.id } }">
+				<router-link
+					:to="{ name: 'HousePage', params: { id: houseInfos._id } }"
+				>
 					<HouseCard :houseInfos="houseInfos"
 				/></router-link>
 			</div>
@@ -20,9 +22,7 @@ export default {
 	components: { HouseCard },
 	async created() {
 		let { data: houseListInfos } = await houseService.getHousesList();
-		// 	.then((response) => {
-		// 		return response;
-		// 	});
+
 		this.houseList = [...houseListInfos];
 		this.houseListToRender = [
 			houseListInfos[0],
@@ -36,7 +36,6 @@ export default {
 	}),
 	methods: {
 		toggleRight: function() {
-			console.log(this.houseList);
 			this.houseListToRender = [
 				this.houseList[3],
 				this.houseList[4],

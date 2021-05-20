@@ -4,6 +4,8 @@ import MarketPlace from '../views/MarketPlace.vue';
 import HousePage from '../views/HousePage.vue';
 import BuyToken from '../views/BuyToken.vue';
 import RegisterUser from '../views/RegisterUser.vue';
+import LoginUser from '../views/LoginUser.vue';
+import UserBoard from '../views/UserBoard.vue';
 
 const routes = [
 	{
@@ -33,11 +35,30 @@ const routes = [
 		name: 'Register',
 		component: RegisterUser,
 	},
+	{
+		path: '/user/board',
+		name: 'UserBoard',
+		component: UserBoard,
+		meta: { requiresAuth: true },
+	},
+	{
+		path: '/user/login',
+		name: 'LoginUser',
+		component: LoginUser,
+	},
 ];
 
 const router = createRouter({
 	history: createWebHistory(process.env.BASE_URL),
 	routes,
+});
+
+router.beforeEach((to, from, next) => {
+	const loggedIn = localStorage.getItem('user');
+	if (to.matched.some((record) => record.meta.requiresAuth) && !loggedIn) {
+		next('/');
+	}
+	next();
 });
 
 export default router;

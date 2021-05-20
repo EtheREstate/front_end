@@ -27,7 +27,7 @@ export default {
 	name: 'HousePage',
 	components: { HousePictures, HouseDetails },
 	props: {
-		id: { type: String, required: true, default: '3' },
+		id: { type: String, required: true, default: '60a234124e064b11c549ac70' },
 	},
 	async setup(props) {
 		let { data: houseInfos } = await houseService.getHouseDetails(props.id);
@@ -36,7 +36,7 @@ export default {
 			// const imageExist = await houseService.checkPicture(
 			// 	houseInfos.pictures[i]
 			// );
-			picturesArray.push(houseInfos.pictures[i]);
+			picturesArray.push(houseInfos.pictures[i].url);
 		}
 		return {
 			houseId: houseInfos.id,

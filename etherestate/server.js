@@ -1,15 +1,22 @@
+//------Server----------------------------------//
+require('dotenv').config();
 const express = require('express');
-const bodyParser = require('body-parser');
 const PORT = 8081 || process.env.PORT;
 const app = express();
+//------Routes----------------------------------//
+const user = require('./backend/routes/user');
+const house = require('./backend/routes/house');
 const { HousesList } = require('./housesList.json');
+//------DB activation---------------------------//
+const db = require('./backend/database/index');
+//------Parsers---------------------------------//
 const cors = require('cors');
-const user = require('./routes/user');
-
 app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname + '/dist'));
+
 app.use('/user', user);
+app.use('/house', house);
 app.get('/houseslist', (req, res) => {
 	res.send(HousesList);
 });
@@ -19,6 +26,7 @@ app.get('/houseslist/:id', (req, res) => {
 app.get(/.*/, function(req, res) {
 	res.sendFile(__dirname + '/dist/index.html');
 });
+
 app.listen(PORT);
-console.log('Server started...');
+
 console.log(`App running at:\n http://localhost:${PORT}/`);

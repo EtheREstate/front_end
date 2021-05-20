@@ -27,32 +27,44 @@
 				</li>
 			</ul>
 		</nav>
-		<a class="etherestate-button-1">
+		<a v-if="!loggedIn" class="etherestate-button-1">
 			<router-link
-				:to="{ name: 'Register' }"
+				:to="{ name: 'LoginUser' }"
 				style="text-decoration: none; color: inherit;"
 				>LOG IN</router-link
+			>
+		</a>
+		<a v-else class="etherestate-button-1" @click="logout">
+			<router-link
+				:to="{ name: 'Home' }"
+				style="text-decoration: none; color: inherit;"
+				>LOG OUT</router-link
 			>
 		</a>
 	</header>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
 	name: 'NavBar',
+	computed: { ...mapGetters(['loggedIn']) },
 	setup() {
-		function goMarketPlace() {
-			console.log('click emitted');
-			router.push({ name: 'Marketplace' });
-		}
-		return { goMarketPlace };
+		// function logout() {
+		// }
+		// return { logout };
 	},
-	method() {},
+	methods: {
+		logout() {
+			this.$store.dispatch('logout');
+			this.$router.push({ name: 'Home' });
+		},
+	},
 };
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/main.css';
+@import '../assets/styles/main.scss';
 #homepage-navbar {
 	width: 40%;
 }

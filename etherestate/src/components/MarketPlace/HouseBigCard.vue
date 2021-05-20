@@ -90,123 +90,15 @@ export default {
 	},
 	setup(props) {
 		return {
-			id: props.houseInfos.id,
+			id: props.houseInfos._id,
 			propertyHighlights: props.houseInfos.propertyHighlights,
 			financialHighlights: props.houseInfos.financialHighlights,
-			picture: props.houseInfos.pictures[0],
+			picture: props.houseInfos.pictures[0].url,
 		};
 	},
 };
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/styles/main.css';
-
-$itemGrow: 1.05;
-$duration: 250ms;
-.house-big-card {
-	width: 100%;
-	height: 350px;
-	margin: 20px;
-	border-radius: 18px;
-	display: grid;
-	grid-template-columns: 60% 40%;
-	grid-template-areas: 'image text';
-	background: whitesmoke;
-	box-shadow: 5px 5px 15px rgba($color: #578688, $alpha: 0.9);
-	text-align: center;
-	transition: $duration all;
-	&:hover {
-		margin: 20px;
-		transform: scale($itemGrow);
-	}
-	.house-big-card-image {
-		border-top-left-radius: 18px;
-		border-bottom-left-radius: 18px;
-		grid-area: 'image';
-		background-size: cover;
-	}
-	.house-big-card-text {
-		grid-area: 'text';
-		display: grid;
-		grid-template-columns: 100%;
-		grid-template-rows: 20% 30% 30% 20%;
-		grid-template-areas: 'address' 'prices' 'details' 'buy-button';
-		.address {
-			grid-area: 'address';
-			border-top-right-radius: 18px;
-
-			h2 {
-				color: #578688;
-				font-size: 20px;
-				position: relative;
-				top: 30%;
-			}
-		}
-		.prices {
-			grid-area: 'prices';
-			display: grid;
-			grid-template-columns: 50% 50%;
-			background: rgba($color: #578688, $alpha: 0.3);
-			h2 {
-				color: #578688;
-				font-size: 20px;
-				position: relative;
-				top: 10%;
-			}
-			span {
-				color: #f2ffff;
-				font-size: 20px;
-				position: relative;
-				top: 20%;
-				background: rgb(255, 153, 37);
-				box-shadow: 5px 5px 15px rgba($color: #578688, $alpha: 0.6);
-				padding: 5px;
-			}
-			.total-price {
-				border-right: 1px solid white;
-			}
-		}
-		.details {
-			grid-area: 'details';
-			display: grid;
-			grid-template-rows: 1fr 1fr 1fr;
-			.detail-row {
-				padding: 10px;
-				font-size: 14px;
-				display: grid;
-				grid-template-columns: 60% 40%;
-				grid-template-areas: 'text' 'value';
-				width: 100%;
-				border-bottom: 1px solid rgba($color: #578688, $alpha: 0.5);
-				.row-value {
-					grid-area: 'value';
-					display: flex;
-					justify-content: flex-end;
-				}
-				.row-text {
-					grid-area: 'text';
-					display: flex;
-					justify-content: flex-start;
-				}
-			}
-			.expected-yld {
-				font-size: 18px;
-			}
-		}
-		.buy-button {
-			grid-area: 'buy-button';
-			border-bottom-right-radius: 18px;
-			display: flex;
-			align-content: center;
-			justify-content: center;
-			button {
-				position: relative;
-				top: 30%;
-				height: 60%;
-				border: none;
-			}
-		}
-	}
-}
+@import '../../assets/styles/components/_house_big_card.scss';
 </style>

@@ -21,7 +21,7 @@ export default {
 	async setup() {
 		let { data: houseListInfos } = await houseService.getHousesList();
 		return {
-			houseListInfos,
+			houseListInfos: houseListInfos,
 		};
 	},
 };

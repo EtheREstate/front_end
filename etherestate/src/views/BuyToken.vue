@@ -1,13 +1,27 @@
 <template>
-	<div>
-		<div>The total token number is : {{ totalTokens }}</div>
-		<div>The token left for sale number is : {{ tokensForSale }}</div>
-		<form @submit.prevent="purchaseTokens">
-			<input type="number" min="0" step="1" v-model="tokensToBuy" />
-			<input type="submit" value="Buy Tokens" />
-		</form>
-		price : {{ price }} ether per token <br />
-		amount : {{ (totalAmount = (tokensToBuy * price).toFixed(4)) }} ether
+	<div class="buy-token">
+		<div class="progress-container">
+			<div class="progress-title">Tokens remaining</div>
+			<div
+				class="progress-bar"
+				:data-label="dataLabel"
+				style="--token-bar-width: 1"
+				:total-tokens="totalTokens"
+			></div>
+		</div>
+		<div class="buy-token-input-container">
+			<div class="number-tokens">
+				<input name="token-input" type="number" v-model="tokensToBuy" />
+			</div>
+			<span class="previous" @click="tokensToBuy--"></span>
+			<span class="next" @click="tokensToBuy++"></span>
+		</div>
+		<div class="price-container">
+			<div class="price-title">Price</div>
+			<div class="price-value">
+				{{ (totalAmount = (tokensToBuy * price).toFixed(4)) }} Ether
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -25,10 +39,14 @@ export default {
 			tokensToBuy: 0,
 			price: 0.0001,
 			totalAmount: 0,
+			progressBar: '',
+			dataLabel: '',
 		};
 	},
 	async mounted() {
 		try {
+			this.progressBar = document.getElementsByClassName('progress-bar')[0];
+
 			// Get network provider and web3 instance.
 			const web3 = await getWeb3();
 
@@ -62,6 +80,7 @@ export default {
 					.send({ from: accounts[0] });
 				this.$store.dispatch('transferDone', true);
 			}
+			this.progressBarWidth();
 		} catch (error) {
 			// Catch any errors for any of the above operations.
 			alert(
@@ -90,8 +109,30 @@ export default {
 			this.$store.dispatch('buyTokens', purchase);
 			this.tokensToBuy = 0;
 		},
+		progressBarWidth() {
+			const maxWidth = Math.floor(
+				(this.tokensForSale * 100) / this.totalTokens
+			);
+			this.dataLabel =
+				new Intl.NumberFormat('en-US').format(this.tokensForSale).toString() +
+				' tokens';
+			var interval = setInterval(() => {
+				const computedStyle = getComputedStyle(this.progressBar);
+				const progressWidth =
+					parseFloat(computedStyle.getPropertyValue('--token-bar-width')) || 0;
+				this.progressBar.style.setProperty(
+					'--token-bar-width',
+					progressWidth + 1
+				);
+				if (progressWidth > maxWidth) {
+					clearInterval(interval);
+				}
+			}, 15);
+		},
 	},
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '../assets/styles/views/_buy_tokens.scss';
+</style>

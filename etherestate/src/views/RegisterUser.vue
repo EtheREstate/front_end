@@ -1,10 +1,14 @@
 <template>
 	<div>
 		<form @submit.prevent="register">
-			<label for="name">
-				Name:
+			<label for="first_name">
+				first_name:
 			</label>
-			<input v-model="name" type="text" name="name" value />
+			<input v-model="first_name" type="text" name="first_name" value />
+			<label for="name">
+				last_name:
+			</label>
+			<input v-model="last_name" type="text" name="last_name" value />
 
 			<label for="email">
 				Email:
@@ -20,26 +24,44 @@
 				Register
 			</button>
 		</form>
+		<div v-if="listOfErrors">
+			<li v-for="error in listOfErrors">{{ error }}</li>
+		</div>
 	</div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
 	name: 'RegisterUser',
+	computed: { ...mapState(['user']) },
 	data() {
 		return {
-			name: '',
+			first_name: '',
+			last_name: '',
 			email: '',
 			password: '',
+			listOfErrors: null,
 		};
 	},
 	methods: {
-		register() {
-			this.$store.dispatch('register', {
-				name: this.name,
-				email: this.email,
-				password: this.password,
-			});
+		async register() {
+			const ip_address = await this.$store.dispatch('getIpAddress');
+			this.$store
+				.dispatch('register', {
+					first_name: this.first_name,
+					last_name: this.last_name,
+					email: this.email,
+					password: this.password,
+					ip_address: ip_address,
+				})
+				.then(() => {
+					if (this.user.registerErrors) {
+						this.listOfErrors = this.user.registerErrors;
+					} else {
+						this.$router.push({ name: 'UserBoard' });
+					}
+				});
 		},
 	},
 };
