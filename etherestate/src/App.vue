@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import * as userService from './service/user.service.js';
 import NavBar from '@/components/NavBar.vue';
 import MarketPlace from '@/views/MarketPlace.vue';
 import HousePage from '@/views/HousePage.vue';

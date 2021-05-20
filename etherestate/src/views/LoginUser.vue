@@ -1,29 +1,33 @@
 <template>
-	<div>
-		<form @submit.prevent="login">
-			<label for="email">
-				Email:
-			</label>
-			<input v-model="email" type="email" name="email" value />
+	<div class="login-container">
+		<h1>Login</h1>
+		<div>
+			<input
+				v-model="email"
+				type="email"
+				name="email"
+				value
+				placeholder="E-mail"
+			/>
 
-			<label for="password">
-				Password:
-			</label>
-			<input v-model="password" type="password" name="password" value />
-
-			<button type="submit" name="button">
-				Login
-			</button>
-		</form>
-		if not registered please register
-		<a
-			><router-link
-				:to="{ name: 'Register' }"
-				style="text-decoration: none; color: blue;"
-				>here</router-link
-			>
-		</a>
-		<div v-if="listOfErrors">
+			<input
+				v-model="password"
+				type="password"
+				name="password"
+				value
+				placeholder="Password"
+			/>
+		</div>
+		<div class="login-button" @click="login">Login</div>
+		<div class="register-change">
+			if not registered please register
+			<a
+				><router-link :to="{ name: 'Register' }" style="text-decoration: none;"
+					>here</router-link
+				>
+			</a>
+		</div>
+		<div v-if="listOfErrors" class="errors-container">
 			<li v-for="error in listOfErrors">{{ error }}</li>
 		</div>
 	</div>
@@ -62,4 +66,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '../assets/styles/views/_login.scss';
+</style>

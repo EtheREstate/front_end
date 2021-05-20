@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import MarketPlace from '../views/MarketPlace.vue';
 import HousePage from '../views/HousePage.vue';
-import BuyToken from '../views/BuyToken.vue';
 import RegisterUser from '../views/RegisterUser.vue';
 import LoginUser from '../views/LoginUser.vue';
 import UserBoard from '../views/UserBoard.vue';
@@ -24,12 +23,7 @@ const routes = [
 		props: true,
 		component: HousePage,
 	},
-	{
-		path: '/buytoken/:id',
-		name: 'BuyToken',
-		props: true,
-		component: BuyToken,
-	},
+
 	{
 		path: '/user/register',
 		name: 'Register',

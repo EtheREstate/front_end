@@ -1,6 +1,8 @@
 .buy-token {
-	width: 600px;
-	height: 400px;
+	padding-top: 20px;
+
+	width: 550px;
+	height: 450px;
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
@@ -28,7 +30,7 @@
 	color: var(--themeColor);
 	border-radius: 1.5em;
 	background-color: white;
-	box-shadow: 5px 5px 15px rgba($color: #578688, $alpha: 0.4);
+	box-shadow: 5px 5px 15px rgba($color: var(--themeColor), $alpha: 0.4);
 }
 
 .progress-bar::before {
@@ -43,7 +45,7 @@
 	width: calc(var(--token-bar-width, 0) * 1%);
 	min-width: 2em;
 	max-width: calc(100% - 1em);
-	background-color: rgb(193, 215, 230);
+	background-color: var(--secondThemeColor);
 	border-radius: 1em;
 	padding: 1em;
 }
@@ -136,4 +138,33 @@
 /* Firefox */
 .number-tokens input[type='number'] {
 	-moz-appearance: textfield;
+}
+.price-container {
+	width: 480px;
+	display: flex;
+	align-content: center;
+	justify-content: space-between;
+	color: var(--themeColor);
+	font-weight: 800;
+	font-size: 20px;
+
+	.price-value {
+		background: rgba($color: #578688, $alpha: 0.9);
+		padding: 10px 30px;
+		border-radius: 5px;
+		color: white;
+		text-transform: uppercase;
+	}
+	.price-title {
+		padding: 10px 30px;
+	}
+}
+.validate-purchase {
+	height: 40px;
+	cursor: pointer;
+	background-color: var(--thirdThemeColor);
+	padding: 10px 120px;
+	border-radius: 20px;
+	color: var(--themeColor);
+	text-transform: uppercase;
 }

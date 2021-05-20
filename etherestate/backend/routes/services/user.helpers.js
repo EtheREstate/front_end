@@ -21,9 +21,13 @@ exports.checkMissingElement = (first_name, last_name, email, password) => {
 };
 
 exports.checkUsedEmail = async (email) => {
-	const dbUserEmail = await userControllers.findEmail(email);
-	if (dbUserEmail.length > 0) {
-		return 'An account with this email already exists';
+	if (email.length > 1) {
+		const dbUserEmail = await userControllers.findEmail(email);
+		if (dbUserEmail.length > 0) {
+			return 'An account with this email already exists';
+		} else {
+			return false;
+		}
 	} else {
 		return false;
 	}

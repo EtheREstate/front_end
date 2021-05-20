@@ -22,13 +22,14 @@
 				{{ (totalAmount = (tokensToBuy * price).toFixed(4)) }} Ether
 			</div>
 		</div>
+		<div class="validate-purchase" @click="purchaseTokens">validate</div>
 	</div>
 </template>
 
 <script>
-import ImmoTokenSaleContract from '../contracts/ImmoTokenSale.json';
-import ImmoTokenContract from '../contracts/ImmoToken.json';
-import getWeb3 from '../getWeb3';
+import ImmoTokenSaleContract from '../../contracts/ImmoTokenSale.json';
+import ImmoTokenContract from '../../contracts/ImmoToken.json';
+import getWeb3 from '../../getWeb3';
 import { mapState, mapGetters } from 'vuex';
 export default {
 	name: 'BuyToken',
@@ -46,10 +47,8 @@ export default {
 	async mounted() {
 		try {
 			this.progressBar = document.getElementsByClassName('progress-bar')[0];
-
 			// Get network provider and web3 instance.
 			const web3 = await getWeb3();
-
 			// Use web3 to get the user's accounts.
 			const accounts = await web3.eth.getAccounts();
 
@@ -134,5 +133,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/views/_buy_tokens.scss';
+@import '../../assets/styles/components/_buy_tokens.scss';
 </style>

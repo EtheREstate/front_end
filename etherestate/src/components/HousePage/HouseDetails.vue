@@ -141,13 +141,9 @@
 				</div>
 			</div>
 			<!-- Button to buy token------------------------------------------------------>
-			<a class="buy-token-btn"
-				><router-link
-					:to="{ name: 'BuyToken' }"
-					style="text-decoration: none; color: inherit;"
-					>Buy Tokens
-				</router-link></a
-			>
+			<a class="buy-token-btn" @click="buyTokenEvent">
+				Buy Tokens
+			</a>
 		</div>
 	</div>
 </template>
@@ -196,6 +192,11 @@ export default {
 			propertyHighlights: props.propertyHighlights,
 			financialHighlights: props.financialHighlights,
 		};
+	},
+	methods: {
+		buyTokenEvent() {
+			this.$emit('buyTokenClick');
+		},
 	},
 };
 </script>
